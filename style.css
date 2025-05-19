@@ -50,12 +50,43 @@ body {
   font-weight: 500;
 }
 
-.contact-button {
-  background-color: red;
-  color: white;
+.nav-menu a.contact-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background-color: #233582;
+  color: #f0f0f0;
   padding: 0.6rem 1rem;
   border-radius: 5px;
   font-weight: bold;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.nav-menu a.contact-button .label {
+  transition: transform 0.3s ease;
+}
+
+.nav-menu a.contact-button .arrow {
+  opacity: 0;
+  transform: translateX(10px);
+  margin-left: 0.5rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 1.1rem;
+}
+
+/* Hover effect */
+.nav-menu a.contact-button:hover {
+  background-color: #3b51c1;
+}
+
+.nav-menu a.contact-button:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nav-menu a.contact-button:hover .label {
+  transform: translateX(-4px);
 }
 
 .dropdown {
@@ -390,7 +421,7 @@ body {
 
 .contact-footer-btn {
   margin-top: 1rem;
-  background-color: red;
+  background-color: #233582;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
