@@ -68,3 +68,57 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".reviews-track");
+  const cards = document.querySelectorAll(".review-card");
+  const prevBtn = document.querySelector(".carousel-btn.prev");
+  const nextBtn = document.querySelector(".carousel-btn.next");
+
+  let currentIndex = 0;
+  const cardsPerView = window.innerWidth < 768 ? 1 : 3;
+  const totalPages = Math.ceil(cards.length / cardsPerView);
+
+  const updateCarousel = () => {
+    const cardWidth = cards[0].offsetWidth;
+    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+  };
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < cards.length - cardsPerView) {
+      currentIndex++;
+      updateCarousel();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    updateCarousel();
+  });
+
+  updateCarousel();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const fadeElements = document.querySelectorAll(".fade-up-box");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        // Uncomment the line below if you only want the animation to run once
+        // observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  fadeElements.forEach(el => observer.observe(el));
+});
