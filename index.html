@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Company Name</title>
+  <title>Piedmont Environmental</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
@@ -11,39 +11,118 @@
   <header class="main-header">
     <div class="logo-title">
       <img src="logo.png" alt="Logo" class="logo" />
-      <h1 class="site-title">Your Company Name</h1>
+      <h1 class="site-title">Piedmont Environmental</h1>
     </div>
     <nav class="nav-menu">
-      <a href="#">Consultations and Design</a>
+      <a href="consultationanddesign.html">Consultations and Design</a>
       <div class="dropdown">
-        <span class="dropdown-toggle">Installations ▼</span>
+        <button class="dropdown-toggle">Installations ▼</button>
         <div class="dropdown-menu">
-          <a href="#">Deer Fence Installations</a>
-          <a href="#">Landscape Installations</a>
+          <a href="deerfenceinstalations.html">Deer Fence Installations</a>
+          <a href="landscapinginstallations.html">Landscape Installations</a>
         </div>
       </div>
-      <a href="#">Invasive Plant Control</a>
-      <a href="#">About</a>
-      <a href="#" class="contact-button">Contact</a>
+      <a href="invasiveplantcontrol.html">Invasive Plant Control</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="contact-button">Contact</a>
     </nav>
   </header>
 
+
   <main>
+    <!-- Hero Section -->
     <section class="hero">
-      <h2>Your Vision, Our Expertise</h2>
+      <div class="hero-text">
+        <h2>Landscaping and Design</h2>
+        <h3>Applying ecological principles to residential landscapes</h3>
+      </div>
     </section>
 
-    <section class="main-content">
-      <p>Welcome to Your Company! We specialize in ecological landscaping, sustainable outdoor designs, and more. Discover how we can transform your property with expert consultations, thoughtful design, and professional installation services.</p>
+    <!-- Brief Description -->
+    <section class="brief-description">
+      <p>We offer sustainable, regionally-adapted landscaping solutions designed to fit your lifestyle and support local ecology.</p>
     </section>
+
+    <!-- Our Goals -->
+    <section class="our-goals">
+      <h2>Our Goals</h2>
+      <ul class="goals-list">
+        <li><img src="check.png" alt="check" /> Thrive and look natural in the Piedmont region of North Carolina</li>
+        <li><img src="check.png" alt="check" /> Meet your individual needs, vision and style</li>
+        <li><img src="check.png" alt="check" /> Be a pleasure to work in and enjoy without being a burden to maintain</li>
+        <li><img src="check.png" alt="check" /> Enhance biodiversity by supporting wildlife</li>
+      </ul>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+      <h2>Services</h2>
+      <div class="services-grid">
+        <a href="#" class="service-card">
+          <img src="images/consult.png" alt="Service 1">
+          <div class="service-info">
+            <h3>Consultation & Design</h3>
+            <div class="divider"></div>
+            <p>Piedmont Environmental residentially designs using the application of ecological principles.</p>
+          </div>
+        </a>
+        <a href="#" class="service-card">
+          <img src="images/deer.png" alt="Service 2">
+          <div class="service-info">
+            <h3>Deer Fencing</h3>
+            <div class="divider"></div>
+            <p>Install a fence around your property to protect yourself against deer.</p>
+          </div>
+        </a>
+        <a href="#" class="service-card">
+          <img src="images/landscape.png" alt="Service 3">
+          <div class="service-info">
+            <h3>Landscape Design</h3>
+            <div class="divider"></div>
+            <p>Proffesional designs to enhance your outdoor space while keeping it ecological.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="location-hours">
+      <div class="hours-map-container">
+        <div class="hours-card">
+          <h2>Visit Us</h2>
+          <p>We are proudly based in the Piedmont region of North Carolina. Come see how we can transform your space.</p>
+          <ul class="hours-list">
+            <li data-day="1"><strong>Mon:</strong> 8:30 AM - 7:30 PM</li>
+            <li data-day="2"><strong>Tue:</strong> 8:30 AM - 7:30 PM</li>
+            <li data-day="3"><strong>Wed:</strong> 8:30 AM - 7:30 PM</li>
+            <li data-day="4"><strong>Thu:</strong> 8:30 AM - 7:30 PM</li>
+            <li data-day="5"><strong>Fri:</strong> 8:30 AM - 7:30 PM</li>
+            <li data-day="6"><strong>Sat:</strong> 2:00 PM - 7:30 PM</li>
+            <li data-day="0"><strong>Sun:</strong> 9:00 AM - 3:00 PM</li>
+          </ul>
+          <div id="open-status" class="open-status"></div>
+        </div>
+
+        <iframe
+          class="map-iframe"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3236.326078708646!2d-79.07211518434358!3d35.91024688014366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ace5109c7eea23%3A0xd5775fbbd7d69d5e!2sCarrboro%2C%20NC!5e0!3m2!1sen!2sus!4v1682915172761"
+          width="100%"
+          height="300"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
+
   </main>
 
   <footer class="main-footer">
     <div class="footer-content">
       <img src="logo.png" alt="Logo" class="footer-logo" />
-      <p>Email: info@yourcompany.com | Phone: (123) 456-7890</p>
+      <p>Email: matthew@piedmont-environmental.com | Phone: (919) 960-6856</p>
       <button class="contact-footer-btn">Contact</button>
     </div>
   </footer>
+  <script src="javascript.js"></script>
 </body>
 </html>
