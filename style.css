@@ -25,23 +25,43 @@ body {
 .logo-title {
   display: flex;
   align-items: center;
+  gap: 15px;
 }
 
-.logo {
-  height: 50px;
-  margin-right: 10px;
+.site-title-wrapper {
+  text-align: center;
 }
 
 .site-title {
-  font-family: 'Georgia', serif;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
+  color: #2a4d2e;
+  text-decoration: none;
+  display: block;
+}
+
+.title-divider {
+  width: 60%;
+  margin: 0.05em auto;
+  border: none;
+  border-top: 2px solid #4CAF50; /* Green line */
+}
+
+.site-subtitle {
+  font-size: 0.9rem;
+  color: #6c9c7d;
+  margin-top: 0.2em;
 }
 
 .nav-menu {
   display: flex;
+  gap: 20px;
   align-items: center;
-  gap: 1.2rem;
+  margin-top: 10px;
+}
+
+.home-button {
+  font-weight: bold;
 }
 
 .nav-menu a {
