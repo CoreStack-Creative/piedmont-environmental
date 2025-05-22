@@ -750,3 +750,66 @@ body {
     transform: translateY(0);
   }
 }
+
+#what-we-offer {
+  padding: 60px 20px;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #2a4829;
+}
+
+.service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.service-item {
+  width: 180px;
+  text-align: center;
+}
+
+.service-item img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 10px;
+}
+
+.service-item h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2a4829;
+}
+
+.pricing-info {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-left: 6px solid #2a4829;
+  padding: 30px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1rem;
+}
+
+.pricing-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #2a4829;
+}
+
+.pricing-info p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
