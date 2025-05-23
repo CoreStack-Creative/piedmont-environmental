@@ -122,3 +122,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   fadeElements.forEach(el => observer.observe(el));
 });
+
+// Wait for DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", function () {
+  const processSections = document.querySelectorAll(".animate-from-left, .animate-from-right");
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target); // optional: remove after triggering once
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  processSections.forEach(section => observer.observe(section));
+});
