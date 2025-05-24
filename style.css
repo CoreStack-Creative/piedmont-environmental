@@ -22,6 +22,12 @@ body {
   z-index: 1000;
 }
 
+.logo {
+  height: 4.5rem;
+  width: auto;
+  max-width: 100%;
+}
+
 .logo-title {
   display: flex;
   align-items: center;
