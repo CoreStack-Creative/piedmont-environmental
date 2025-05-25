@@ -1004,16 +1004,18 @@ body {
   gap: 2rem;
   margin-top: 2rem;
   flex-wrap: wrap;
+  margin-left: 2rem;
+  margin-right: 25rem;
 }
 
 .how-we-work-image {
   flex: 1;
-  min-width: 300px;
-  max-width: 400px;
-  border-radius: 12px;
+  min-width: 18.75rem;
+  max-width: 25rem;
+  border-radius: 0.75rem;
   object-fit: cover;
-  margin-left: 24rem;
-  margin-right: -10rem;
+  margin-left: 22rem;
+  margin-right: 1rem;
 }
 
 .pricing-info {
