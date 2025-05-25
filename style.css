@@ -1002,10 +1002,11 @@ body {
   display: flex;
   align-items: stretch;
   gap: 2rem;
+  flex-wrap: nowrap;
+  padding-left: 12rem; /* more padding to center it */
+  padding-right: 2rem;
   margin-top: 2rem;
-  flex-wrap: wrap;
-  margin-left: 2rem;
-  margin-right: 25rem;
+  max-width: 100%;
 }
 
 .how-we-work-image {
@@ -1014,8 +1015,19 @@ body {
   max-width: 25rem;
   border-radius: 0.75rem;
   object-fit: cover;
-  margin-left: 22rem;
-  margin-right: 1rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .how-we-work-wrapper {
+    flex-wrap: wrap;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .how-we-work-image {
+    margin: 0 auto;
+  }
 }
 
 .pricing-info {
