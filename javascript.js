@@ -141,3 +141,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
   processSections.forEach(section => observer.observe(section));
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".reviews-track");
+  const cards = document.querySelectorAll(".review-card");
+  const prevBtn = document.querySelector(".carousel-btn.prev");
+  const nextBtn = document.querySelector(".carousel-btn.next");
+
+  const visibleCards = 3;
+  const totalCards = cards.length;
+  let currentIndex = visibleCards; // Start after prepended clones
+
+  // Clone first and last N cards
+  for (let i = 0; i < visibleCards; i++) {
+    const firstClone = cards[i].cloneNode(true);
+    const lastClone = cards[totalCards - 1 - i].cloneNode(true);
+    firstClone.classList.add("clone");
+    lastClone.classList.add("clone");
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, track.firstChild);
+  }
+
+  const allCards = document.querySelectorAll(".review-card");
+  const cardWidth = cards[0].offsetWidth + 16; // Including margin
+
+  // Set initial position
+  track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+  function moveTo(index) {
+    track.style.transition = "transform 0.5s ease-in-out";
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
+    currentIndex = index;
+  }
+
+  function handleTransitionEnd() {
+    // Jump to real start
+    if (currentIndex >= totalCards + visibleCards) {
+      track.style.transition = "none";
+      currentIndex = visibleCards;
+      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    }
+
+    // Jump to real end
+    if (currentIndex < visibleCards) {
+      track.style.transition = "none";
+      currentIndex = totalCards + visibleCards - 1;
+      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    }
+  }
+
+  nextBtn.addEventListener("click", () => {
+    moveTo(currentIndex + 1);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    moveTo(currentIndex - 1);
+  });
+
+  track.addEventListener("transitionend", handleTransitionEnd);
+});
