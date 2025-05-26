@@ -200,3 +200,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   track.addEventListener("transitionend", handleTransitionEnd);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const service = document.getElementById("service").value;
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !email || !service) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    const subject = `Service Request: ${service}`;
+    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AService: ${service}%0D%0A%0D%0AComments:%0D%0A${message}`;
+
+    const mailtoLink = `mailto:velo.guidrycsc@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    window.open(mailtoLink, "_blank");
+  });
+});
