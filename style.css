@@ -446,31 +446,97 @@ body {
 .main-footer {
   background-color: #222;
   color: white;
-  text-align: center;
   padding: 2rem 1rem;
   margin-top: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.footer-content {
+.footer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-branding {
+  margin-bottom: 2rem;
 }
 
 .footer-logo {
-  height: 40px;
-  margin-bottom: 10px;
+  height: 4.5rem;
+  margin-bottom: -1.2rem;
+}
+
+.site-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2a4d2e; /* green tone */
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.footer-description {
+  max-width: 400px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.footer-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.footer-section {
+  min-width: 200px;
+}
+
+.footer-section h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin: 0.2rem 0;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 .contact-footer-btn {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   background-color: #233582;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-footer-btn:hover {
+  background-color: #1b2b6b;
+}
+
+@media (max-width: 768px) {
+  .footer-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .reviews-section {
