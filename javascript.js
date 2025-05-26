@@ -224,3 +224,69 @@ document.addEventListener("DOMContentLoaded", function () {
     window.open(mailtoLink, "_blank");
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const carousel = document.getElementById("examples-carousel");
+  const track = document.getElementById("carousel-track");
+  const items = Array.from(track.children);
+
+  // Clone all items for seamless infinite loop
+  items.forEach(item => {
+    const clone = item.cloneNode(true);
+    clone.classList.add("clone");
+    track.appendChild(clone);
+  });
+
+  const totalWidth = track.scrollWidth / 2; // width of original items
+
+  let scrollPos = 0;
+  let isHovering = false;
+  let scrollVelocity = 0.7; // faster auto scroll (pixels per frame at ~60fps)
+  let lastTimestamp = null;
+
+  // Auto scroll function using requestAnimationFrame
+  function autoScroll(timestamp) {
+    if (!lastTimestamp) lastTimestamp = timestamp;
+    const delta = timestamp - lastTimestamp;
+    lastTimestamp = timestamp;
+
+    if (!isHovering) {
+      scrollPos += scrollVelocity * (delta / 16); // normalize speed
+      if (scrollPos >= totalWidth) {
+        scrollPos -= totalWidth;
+      }
+      carousel.scrollLeft = scrollPos;
+    }
+    requestAnimationFrame(autoScroll);
+  }
+
+  requestAnimationFrame(autoScroll);
+
+  // Stop auto-scroll immediately on hover
+  carousel.addEventListener("mouseenter", () => {
+    isHovering = true;
+  });
+
+  // Resume auto-scroll on mouse leave
+  carousel.addEventListener("mouseleave", () => {
+    isHovering = false;
+  });
+
+  // Scroll faster and smoother on wheel hover
+  carousel.addEventListener("wheel", (e) => {
+    if (!isHovering) return;
+
+    e.preventDefault();
+
+    // Increase scroll sensitivity multiplier
+    const scrollSpeedMultiplier = 3; // 3x faster manual scroll
+
+    scrollPos += e.deltaY * scrollSpeedMultiplier;
+
+    // Loop seamlessly
+    if (scrollPos < 0) scrollPos += totalWidth;
+    if (scrollPos > totalWidth) scrollPos -= totalWidth;
+
+    carousel.scrollLeft = scrollPos;
+  }, { passive: false });
+});

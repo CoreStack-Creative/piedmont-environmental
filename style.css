@@ -876,6 +876,7 @@ body {
 .fence-examples {
   background: #fff;
   padding: 3rem 2rem;
+  overflow: hidden;
 }
 
 .fence-examples h2 {
@@ -885,17 +886,21 @@ body {
 }
 
 .examples-carousel {
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
   position: relative;
+  cursor: grab;
+  user-select: none;
+}
+
+.examples-carousel.grabbing {
+  cursor: grabbing;
 }
 
 .carousel-track {
   display: flex;
   gap: 1rem;
-  animation: scroll-loop 30s linear infinite;
+  /* no animation here - we'll do smooth JS scroll */
+  will-change: transform;
 }
 
 .carousel-item {
@@ -912,10 +917,15 @@ body {
   object-fit: cover;
 }
 
-/* Looping Animation */
+
 @keyframes scroll-loop {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+.examples-carousel:hover .carousel-track {
+  animation-play-state: paused;
+  cursor: grab;
 }
 
 /* Call to Action Section */
