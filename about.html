@@ -39,31 +39,35 @@
   </header>
   <main>
     <section class="vine-section">
-      <div class="vine-line"></div>
+      <!-- SVG Curved Vine -->
+      <svg class="vine-svg" viewBox="0 0 200 2000" preserveAspectRatio="xMidYMid meet">
+        <path id="vinePath" d="M100 0 C150 200, 50 400, 100 600 C150 800, 50 1000, 100 1200 C150 1400, 50 1600, 100 1800" stroke="#4caf50" stroke-width="4" fill="none"/>
+      </svg>
   
-      <div class="leaf-box left">
-        <div class="leaf-content fade-in">
+      <!-- Leaf Boxes -->
+      <div class="leaf-box left" style="top: 100px;">
+        <div class="leaf-shape fade-in">
           <h2>Our Roots</h2>
           <p>We started small, with a single mower and a big dream.</p>
         </div>
       </div>
   
-      <div class="leaf-box right">
-        <div class="leaf-content fade-in">
+      <div class="leaf-box right" style="top: 600px;">
+        <div class="leaf-shape fade-in">
           <h2>Growth</h2>
           <p>Every year, we’ve branched out—just like a healthy vine.</p>
         </div>
       </div>
   
-      <div class="leaf-box left">
-        <div class="leaf-content fade-in">
+      <div class="leaf-box left" style="top: 1200px;">
+        <div class="leaf-shape fade-in">
           <h2>Community</h2>
           <p>We’ve grown thanks to loyal customers and local support.</p>
         </div>
       </div>
   
-      <div class="leaf-box right">
-        <div class="leaf-content fade-in">
+      <div class="leaf-box right" style="top: 1800px;">
+        <div class="leaf-shape fade-in">
           <h2>Future</h2>
           <p>We’re always looking ahead to greener innovations.</p>
         </div>
@@ -72,7 +76,7 @@
   
     <script src="javascript.js"></script>
   </main>
-  
+
   <footer class="main-footer">
     <div class="footer-content">
       <img src="logo.png" alt="Logo" class="footer-logo" />

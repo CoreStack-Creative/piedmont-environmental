@@ -1213,3 +1213,92 @@ body {
     text-align: center;
   }
 }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f8f5;
+}
+
+.vine-section {
+  position: relative;
+  width: 100%;
+  height: 2000px;
+  overflow-x: hidden;
+}
+
+/* SVG vine */
+.vine-svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2000px;
+  width: 200px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Leaf box positioning */
+.leaf-box {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  z-index: 2;
+  padding: 1rem;
+}
+
+.leaf-box.right {
+  justify-content: flex-end;
+}
+
+/* Custom leaf shape */
+.leaf-shape {
+  background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+  padding: 1.5rem 2rem;
+  border-radius: 0 50% 50% 50% / 0 100% 100% 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  transform: rotate(-3deg);
+  transition: transform 0.5s, opacity 0.5s;
+  opacity: 0;
+}
+
+.leaf-box.right .leaf-shape {
+  border-radius: 50% 0 50% 50% / 100% 0 100% 100%;
+  transform: rotate(3deg);
+}
+
+.leaf-shape h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #2e7d32;
+}
+
+.leaf-shape p {
+  font-size: 1rem;
+  margin: 0.5rem 0 0;
+}
+
+/* Fade in animation */
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+@media (max-width: 768px) {
+  .leaf-box {
+    justify-content: center;
+  }
+
+  .leaf-shape {
+    border-radius: 20px;
+    transform: rotate(0deg);
+    max-width: 90%;
+  }
+
+  .vine-svg {
+    left: 10%;
+  }
+}
