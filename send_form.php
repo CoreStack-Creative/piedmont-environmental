@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   // Set recipient email
-  $to = "your@email.com"; // ← Replace with your email
+  $to = "velo.guidrycsc@gmail.com"; // ← Replace with your email
   $subject = "New Contact Form Submission from $name";
   $headers = "From: $name <$email>\r\n";
   $headers .= "Reply-To: $email\r\n";
