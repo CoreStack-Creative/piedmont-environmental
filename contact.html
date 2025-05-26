@@ -49,13 +49,38 @@
     <!-- Introduction -->
     <section class="design-intro">
       <p>
-        I would be happy to meet you and discuss your site conditions, landscape goals and aspirations.
-        I prefer emails but you may also contact me at
-        home: 919-960-6856
-        cell: 919-423-4253
+        I’d be happy to meet you and discuss your site conditions, landscape goals, and aspirations.
+        I prefer email, but you may also contact me at:<br>
+        Home: 919-960-6856<br>
+        Cell: 919-423-4253
       </p>
     </section>
 
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+      <form class="contact-form" action="send_form.php" method="POST">
+        <label for="name">Name<span>*</span></label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email<span>*</span></label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="service">What do you need?<span>*</span></label>
+        <select id="service" name="service" required>
+          <option value="">-- Please choose one --</option>
+          <option value="Consultation and Design">Consultation and Design</option>
+          <option value="Landscape Installations">Landscape Installations</option>
+          <option value="Deer Fence Installations">Deer Fence Installations</option>
+          <option value="Invasive Plant Removal">Invasive Plant Removal</option>
+        </select>
+
+        <label for="message">Comments</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell me more... (optional)"></textarea>
+
+        <button type="submit" class="submit-button">Send Message</button>
+      </form>
+      <div class="form-response hidden">Message Sent. Thank you!</div>
+    </section>
   </main>
 
   <footer class="main-footer">
