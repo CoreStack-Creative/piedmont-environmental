@@ -471,50 +471,37 @@ body {
 .main-footer {
   background-color: #222;
   color: white;
-  padding: 2rem 1rem;
-  margin-top: 2rem;
+  padding: 2rem 1rem 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .footer-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  justify-content: space-between;
+  align-items: flex-start;
   max-width: 1200px;
   margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .footer-branding {
-  margin-bottom: 2rem;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .footer-logo {
-  height: 4.5rem;
-  margin-bottom: -1.2rem;
-}
-
-.site-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #2a4d2e; /* green tone */
-  text-decoration: none;
-  margin-bottom: 0.5rem;
-  display: inline-block;
-}
-
-.footer-description {
-  max-width: 400px;
-  margin: 0 auto;
-  font-size: 0.95rem;
-  color: #ccc;
+  height: 13rem;
 }
 
 .footer-info {
+  flex: 3;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 2rem;
+  justify-content: flex-end;
 }
 
 .footer-section {
@@ -533,12 +520,98 @@ body {
   color: #ccc;
   margin: 0.2rem 0;
   text-decoration: none;
+}
 
-  /* Use flex to space labels and values */
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+.footer-section a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Hours Table */
+.footer-section.hours-table {
+  display: block;
+}
+
+.footer-hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.footer-hours-table td {
+  padding: 0.2rem 0;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.footer-hours-table td:first-child {
+  font-weight: bold;
+  padding-right: 1rem;
+  text-align: left;
   white-space: nowrap;
+}
+
+.footer-hours-table td:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.footer-section.contact-section {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Footer bottom bar */
+.footer-bottom {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.footer-bottom a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Responsive stack on small screens */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-info {
+    justify-content: center;
+  }
+
+  .footer-section.contact-section {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-hours-table td {
+    display: block;
+    text-align: center;
+  }
+
+  .footer-hours-table tr {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-logo {
+    height: 10rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .footer-section p span,
@@ -579,6 +652,13 @@ body {
 
 .contact-footer-btn:hover {
   background-color: #1b2b6b;
+}
+
+.footer-section.contact-section {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 @media (max-width: 768px) {
@@ -1251,12 +1331,9 @@ body {
 
 /* Contact Section Layout */
 .contact-section {
-  padding: 3rem 2rem;
   max-width: 800px;
   margin: 0 auto;
-  background-color: #f7f7f7;
   border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Contact Form Heading */
