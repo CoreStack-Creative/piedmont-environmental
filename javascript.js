@@ -241,53 +241,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let scrollPos = 0;
   let isHovering = false;
-  let scrollVelocity = 0.7; // faster auto scroll (pixels per frame at ~60fps)
+  let manualScrollVelocity = 0;
+  const autoScrollVelocity = 0.7; // auto scroll speed (pixels per frame)
   let lastTimestamp = null;
 
-  // Auto scroll function using requestAnimationFrame
-  function autoScroll(timestamp) {
+  function clampScroll() {
+    if (scrollPos >= totalWidth) scrollPos -= totalWidth;
+    if (scrollPos < 0) scrollPos += totalWidth;
+  }
+
+  // Main animation loop for scrolling
+  function animate(timestamp) {
     if (!lastTimestamp) lastTimestamp = timestamp;
     const delta = timestamp - lastTimestamp;
     lastTimestamp = timestamp;
 
     if (!isHovering) {
-      scrollPos += scrollVelocity * (delta / 16); // normalize speed
-      if (scrollPos >= totalWidth) {
-        scrollPos -= totalWidth;
+      // Auto-scroll only when not hovering and no manual velocity
+      if (manualScrollVelocity === 0) {
+        scrollPos += autoScrollVelocity * (delta / 16);
+        clampScroll();
+        carousel.scrollLeft = scrollPos;
+      } else {
+        // Gradually reduce manual scroll velocity (friction)
+        manualScrollVelocity *= 0.95;
+        scrollPos += manualScrollVelocity * (delta / 16);
+        clampScroll();
+        carousel.scrollLeft = scrollPos;
+
+        // Stop manual velocity when small
+        if (Math.abs(manualScrollVelocity) < 0.01) manualScrollVelocity = 0;
       }
+    } else {
+      // When hovering, manual scroll velocity controlled by wheel event only
+      scrollPos += manualScrollVelocity * (delta / 16);
+      clampScroll();
       carousel.scrollLeft = scrollPos;
+
+      // Apply friction so it slows down smoothly if wheel stops
+      manualScrollVelocity *= 0.9;
+      if (Math.abs(manualScrollVelocity) < 0.01) manualScrollVelocity = 0;
     }
-    requestAnimationFrame(autoScroll);
+
+    requestAnimationFrame(animate);
   }
 
-  requestAnimationFrame(autoScroll);
+  requestAnimationFrame(animate);
 
-  // Stop auto-scroll immediately on hover
   carousel.addEventListener("mouseenter", () => {
     isHovering = true;
+    manualScrollVelocity = 0; // reset manual velocity when hovered
   });
 
-  // Resume auto-scroll on mouse leave
   carousel.addEventListener("mouseleave", () => {
     isHovering = false;
   });
 
-  // Scroll faster and smoother on wheel hover
+  // Wheel event to control manual scroll velocity
   carousel.addEventListener("wheel", (e) => {
     if (!isHovering) return;
 
     e.preventDefault();
 
-    // Increase scroll sensitivity multiplier
-    const scrollSpeedMultiplier = 3; // 3x faster manual scroll
+    // Invert deltaY to match natural scroll direction, and multiply for sensitivity
+    const scrollSpeedMultiplier = 3;
+    manualScrollVelocity += e.deltaY * scrollSpeedMultiplier * 0.3;
 
-    scrollPos += e.deltaY * scrollSpeedMultiplier;
-
-    // Loop seamlessly
-    if (scrollPos < 0) scrollPos += totalWidth;
-    if (scrollPos > totalWidth) scrollPos -= totalWidth;
-
-    carousel.scrollLeft = scrollPos;
+    // Clamp manual velocity to reasonable limits to prevent too fast scrolling
+    manualScrollVelocity = Math.max(Math.min(manualScrollVelocity, 15), -15);
   }, { passive: false });
 });
 
