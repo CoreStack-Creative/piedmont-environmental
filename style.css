@@ -392,15 +392,40 @@ body {
   list-style: none;
   padding: 0;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .hours-list li {
-  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  border-bottom: 1px dashed #555;
+  padding-bottom: 0.3rem;
 }
 
-.hours-list li.today {
-  font-weight: bold;
+.hours-list li .day {
+  font-weight: 600;
+  color: #fff;
+  width: 70px;
+}
+
+.hours-list li .time {
+  color: #ccc;
+  text-align: right;
+  flex: 1;
+  margin-right: 7rem;
+}
+
+.hours-list li.today .day {
   color: #00ffcc;
+  font-weight: bold;
+}
+
+.hours-list li.today .time {
+  color: #00ffcc;
+  font-weight: bold;
 }
 
 .open-status {
@@ -508,6 +533,31 @@ body {
   color: #ccc;
   margin: 0.2rem 0;
   text-decoration: none;
+
+  /* Use flex to space labels and values */
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  white-space: nowrap;
+}
+
+.footer-section p span,
+.footer-section a span {
+  display: inline-block;
+}
+
+/* Ensure multiline items like the address don’t break the layout */
+.footer-section p.full-width {
+  display: block;
+  text-align: left;
+  white-space: normal;
+}
+
+/* Optionally make buttons stretch full width on mobile */
+@media (max-width: 768px) {
+  .contact-footer-btn {
+    width: 100%;
+  }
 }
 
 .footer-section a:hover {
