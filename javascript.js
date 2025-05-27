@@ -333,3 +333,37 @@ document.addEventListener("DOMContentLoaded", () => {
     appearOnScroll.observe(fader);
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll(".principle-section img");
+  const lightbox = document.createElement("div");
+  const lightboxImg = document.createElement("img");
+  const closeBtn = document.createElement("span");
+
+  // Set up lightbox structure
+  lightbox.classList.add("lightbox-overlay");
+  lightboxImg.classList.add("lightbox-img");
+  closeBtn.classList.add("lightbox-close");
+  closeBtn.innerHTML = "&times;";
+
+  lightbox.appendChild(closeBtn);
+  lightbox.appendChild(lightboxImg);
+  document.body.appendChild(lightbox);
+
+  // Add click listeners to each image
+  images.forEach((img) => {
+    img.style.cursor = "zoom-in";
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add("active");
+    });
+  });
+
+  // Close lightbox on click outside image or on close button
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox || e.target === closeBtn) {
+      lightbox.classList.remove("active");
+      lightboxImg.src = "";
+    }
+  });
+});
