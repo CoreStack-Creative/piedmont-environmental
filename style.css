@@ -1544,28 +1544,28 @@ body {
   }
 }
 
-.contact-services-section {
-  padding: 4rem 1rem;
+.contact-options-section {
+  padding: 5rem 1rem;
+  background: linear-gradient(to bottom, #f0f4fa, #ffffff);
   text-align: center;
-  background-color: #f6f6f6;
 }
 
-.contact-services-section h3 {
-  font-size: 2rem;
+.contact-options-section h3 {
+  font-size: 2.2rem;
   color: #233582;
   margin-bottom: 2.5rem;
   font-weight: 600;
 }
 
-.services-grid {
+.contact-option-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
   max-width: 1000px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 4rem;
 }
 
-.service-card {
+.contact-option-card {
   position: relative;
   height: 180px;
   border-radius: 12px;
@@ -1574,14 +1574,14 @@ body {
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
 
-.service-card:hover {
+.contact-option-card:hover {
   transform: scale(1.05);
 }
 
-.service-overlay {
+.contact-option-overlay {
   background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
   height: 100%;
   width: 100%;
@@ -1592,27 +1592,57 @@ body {
   padding: 1rem;
 }
 
-.service-overlay h4 {
+.contact-option-overlay h4 {
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   margin: 0;
 }
 
-.contact-details {
-  font-size: 1.1rem;
-  color: #333;
-  line-height: 2;
+.direct-contact-box {
+  background-color: #e9eef8;
+  padding: 2rem 2rem 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.contact-details a {
+.direct-contact-box h4 {
+  font-size: 1.6rem;
+  color: #233582;
+  margin-bottom: 1.5rem;
+}
+
+.direct-contact-detail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.direct-contact-icon {
+  font-size: 1.3rem;
+}
+
+.direct-contact-detail a {
   color: #233582;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.contact-details a:hover {
+.direct-contact-detail a:hover {
   color: #1a2b6b;
   text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .direct-contact-detail {
+    justify-content: center;
+    text-align: center;
+  }
 }
