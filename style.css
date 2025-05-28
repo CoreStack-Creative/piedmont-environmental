@@ -1543,3 +1543,76 @@ body {
     left: 10%;
   }
 }
+
+.contact-services-section {
+  padding: 4rem 1rem;
+  text-align: center;
+  background-color: #f6f6f6;
+}
+
+.contact-services-section h3 {
+  font-size: 2rem;
+  color: #233582;
+  margin-bottom: 2.5rem;
+  font-weight: 600;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+}
+
+.service-card {
+  position: relative;
+  height: 180px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+}
+
+.service-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.service-overlay h4 {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.contact-details {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 2;
+}
+
+.contact-details a {
+  color: #233582;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-details a:hover {
+  color: #1a2b6b;
+  text-decoration: underline;
+}
