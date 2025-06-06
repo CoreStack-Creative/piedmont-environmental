@@ -262,7 +262,7 @@ body {
 
 .our-goals {
   padding: 2rem;
-  background-color: #a4bfad;
+  background: url('images/flowers.png') center/cover no-repeat;
 }
 
 .our-goals h2 {
@@ -1721,7 +1721,7 @@ body {
 .about-main {
   max-width: 1200px;
   margin: 4rem auto;
-  padding: 0 2rem;
+  padding: 0rem 0rem;
 }
 
 .about-intro {
@@ -1745,7 +1745,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 4rem; 
+  margin-top: 3rem;
   align-items: center;
 }
 
@@ -1762,13 +1763,16 @@ body {
 }
 
 .bio-text {
-  flex: 2 1 400px;
+  flex: 2 1 400px; 
+  text-align: left; 
+  margin-left: 1rem;
 }
 
 .bio-text h2 {
   font-size: 2rem;
   color: #2a4d2e;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.75rem; 
+  text-align: center;
 }
 
 .bio-text p {
@@ -1826,3 +1830,134 @@ body {
   color: #555;
   margin: 0;
 }
+ 
+.replace-with-logo-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.intro-box-text {
+  flex: 1 1 55%;
+}
+
+.intro-box-text h2 {
+  font-size: 2rem;
+  color: #2a4d2e;
+  margin-bottom: 1rem;
+}
+
+.intro-box-text p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.intro-box-logo {
+  flex: 1 1 40%;
+  text-align: center;
+}
+
+.intro-box-logo img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.intro-logo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.intro-logo-text {
+  flex: 1 1 55%;
+}
+
+.intro-logo-text h2 {
+  font-size: 2.2rem;
+  color: #2a4d2e;
+  margin-bottom: 1rem;
+}
+
+.intro-logo-text p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.intro-logo-image {
+  flex: 1 1 40%;
+  text-align: center;
+}
+
+.intro-logo-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.about-box-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin: 3rem 0;
+  align-items: stretch; /* ensures all items stretch to same height */
+}
+
+.about-box {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* keeps button or image at the bottom if needed */
+  height: 100%; /* full height of the grid cell */
+}
+
+
+.logo-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.text-box h2,
+.contact-box h2 {
+  font-size: 1.5rem;
+  color: #2a4d2e;
+  margin-bottom: 1rem;
+}
+
+.text-box p,
+.contact-box p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.contact-box {
+  background-color: #eafaf0;
+}
+
+.contact-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #45a049;
+}
+
