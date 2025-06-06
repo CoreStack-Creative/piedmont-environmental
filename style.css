@@ -77,12 +77,13 @@ body {
 }
 
 .nav-menu a.contact-button {
+  margin-bottom: 1rem;
   position: relative;
   display: inline-flex;
   align-items: center;
   background-color: #233582;
   color: #f0f0f0;
-  padding: 0.6rem 1rem;
+  padding: 0.8rem 1rem;
   border-radius: 5px;
   font-weight: bold;
   overflow: hidden;
@@ -90,6 +91,7 @@ body {
 }
 
 .nav-menu a.contact-button .label {
+  margin-left: 1.15rem;
   transition: transform 0.3s ease;
 }
 
