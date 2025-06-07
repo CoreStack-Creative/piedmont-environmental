@@ -789,9 +789,24 @@ body {
 }
 
 .reviews-section {
+  position: relative;
   padding: 3rem 1rem;
-  background-color: #a4bfad;
   text-align: center;
+  background-image: url('images/reviews-bg.jpg'); /* replace with your actual image path */
+  background-size: cover;
+  background-position: center;
+  color: #2e2e2e;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Overlay to whiten the background */
+.reviews-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.85); /* white overlay at 75% opacity */
+  z-index: -1;
 }
 
 .reviews-section h2 {
