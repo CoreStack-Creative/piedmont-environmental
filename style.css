@@ -301,6 +301,52 @@ body {
   margin-top: 4px;
 }
 
+.goals-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.goals-list {
+  flex: 1 1 60%;
+}
+
+.goals-side-image {
+  flex-shrink: 0;
+  width: 17rem;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 12px;
+  mask-image: radial-gradient(
+    circle at center,
+    black 60%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 60%,
+    transparent 100%
+  );
+  background-color: #a4bfad;
+}
+
+
+@media (max-width: 768px) {
+  .goals-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .goals-side-image {
+    margin-top: 2rem;
+    width: 80px;
+  }
+}
+
 @keyframes slideIn {
   to {
     opacity: 1;
