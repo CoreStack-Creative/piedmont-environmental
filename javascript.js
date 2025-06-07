@@ -395,3 +395,59 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const thumbnails = document.querySelectorAll(".project-thumb");
+  const lightbox = document.querySelector(".lightbox");
+  const lightboxImg = document.querySelector(".lightbox img");
+  const leftArrow = document.querySelector(".lightbox-arrow.left");
+  const rightArrow = document.querySelector(".lightbox-arrow.right");
+  const closeButton = document.querySelector(".lightbox-close");
+
+  let currentIndex = 0;
+
+  // Extract the visible thumbnails' sources
+  const imageSources = Array.from(thumbnails).map(img => img.src);
+
+  // Add more images (only used in lightbox)
+  imageSources.push(
+    "images/project6.jpg",
+    "images/project7.jpg",
+    "images/project8.jpg",
+    "images/project9.jpg",
+  );
+
+  function showImage(index) {
+    currentIndex = (index + imageSources.length) % imageSources.length;
+    lightboxImg.src = imageSources[currentIndex];
+    lightbox.classList.add("active");
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+  }
+
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener("click", () => showImage(index));
+  });
+
+  leftArrow.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showImage(currentIndex - 1);
+  });
+
+  rightArrow.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showImage(currentIndex + 1);
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
+});
+
