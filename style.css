@@ -319,7 +319,7 @@ body {
   flex-shrink: 0;
   width: 17rem;
   height: auto;
-  margin-top: 1rem;
+  margin-top: 0.2rem;
   border-radius: 12px;
   mask-image: radial-gradient(
     circle at center,
