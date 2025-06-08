@@ -414,6 +414,13 @@ document.addEventListener("DOMContentLoaded", () => {
     "images/project7.jpg",
     "images/project8.jpg",
     "images/project9.jpg",
+    "images/project10.JPG",
+    "images/project11.JPG",
+    "images/project12.JPG",
+    "images/project13.JPG",
+    "images/project14.JPG",
+    "images/consultations.JPG",
+
   );
 
   function showImage(index) {
