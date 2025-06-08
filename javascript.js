@@ -411,15 +411,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add more images (only used in lightbox)
   imageSources.push(
     "images/project6.jpg",
-    "images/project7.jpg",
+    "images/fence3.jpg",
     "images/project8.jpg",
     "images/project9.jpg",
     "images/project10.JPG",
     "images/project11.JPG",
-    "images/project12.JPG",
-    "images/project13.JPG",
+    "images/project2.jpg",
+    "images/project3.jpg",
     "images/project14.JPG",
     "images/consultations.JPG",
+    "images/project4.jpg",
+    "images/project7.jpg",
 
   );
 
