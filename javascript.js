@@ -460,3 +460,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+let lastScrollY = window.scrollY;
+const header = document.querySelector('.main-header');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > lastScrollY && window.scrollY > 100) {
+    header.classList.add('header-hidden');
+  } else {
+    header.classList.remove('header-hidden');
+  }
+  lastScrollY = window.scrollY;
+});
+
