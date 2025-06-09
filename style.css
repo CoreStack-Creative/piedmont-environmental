@@ -435,23 +435,50 @@ body {
   filter: blur(3px);
 }
 
+/* Static title at bottom of card */
+.service-title-static {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  background-color: rgba(0, 0, 0, 0.55);
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+  z-index: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Slide up animation on hover */
+.service-card:hover .service-title-static {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Adjust service-info to appear from bottom */
 .service-info {
   position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  top: auto;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.75);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  opacity: 1;
+  padding: 1rem;
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  padding: 1rem;
+  justify-content: center;
   text-align: center;
 }
 
+/* Show info box by sliding it up */
 .service-card:hover .service-info {
-  opacity: 1;
+  transform: translateY(0);
 }
 
 .service-info .divider {
@@ -530,6 +557,16 @@ body {
   color: #233582;
   animation: bounceArrow 1.2s infinite;
   margin-top: 1rem;
+}
+
+.animate-delay-0 {
+  animation-delay: 0s;
+}
+.animate-delay-1 {
+  animation-delay: 0.2s;
+}
+.animate-delay-2 {
+  animation-delay: 0.4s;
 }
 
 /* Bounce animation */
