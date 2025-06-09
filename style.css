@@ -266,6 +266,24 @@ body {
     margin-top: 1rem;
     text-align: center;
   }
+
+  /* NEW: Responsive logo & title adjustments */
+  .logo {
+    height: 3.5rem;
+  }
+
+  .logo-title {
+    gap: 10px;
+  }
+
+  .site-title {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
+
+  .site-subtitle {
+    font-size: 1rem;
+  }
 }
 
 .hero {
