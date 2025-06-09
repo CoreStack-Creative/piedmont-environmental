@@ -1157,34 +1157,32 @@ body {
 .pricing-section {
   background-color: #d8e9db;
   text-align: center;
-  padding: 3rem 1rem;
-  border-radius: 12px;
-  margin: 2rem 1rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 1rem 0;
+  border-radius: 0;
+  margin: 0;
+  width: 100%;
 }
 
-.pricing-section h3 {
-  font-size: 2rem;
+.pricing-section .pricing-line {
+  font-size: 1rem;
   color: #233582;
-  margin-bottom: 1rem;
-}
-
-.pricing-section p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .contact-cta-button {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1.2rem;
   background-color: #233582;
   color: white;
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 6px;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  font-size: 0.9rem;
 }
 
 .contact-cta-button:hover {
