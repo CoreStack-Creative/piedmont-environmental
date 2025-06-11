@@ -2491,4 +2491,44 @@ hr {
   transform: rotateY(180deg);
 }
 
-\\\\\
+/* Two-column layout for sections */
+.side-by-side {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.side-by-side .principle-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.image-placeholder {
+  flex: 1;
+  min-width: 280px;
+  padding: 2rem;
+  background-color: #ddd;
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  border: 2px dashed #aaa;
+  height: 100%;
+}
+
+/* Horizontal image row */
+.image-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.half-img {
+  width: 48%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
