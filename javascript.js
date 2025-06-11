@@ -1,47 +1,3 @@
-const hours = {
-  0: { open: "09:00", close: "15:00" },
-  1: { open: "08:30", close: "19:30" },
-  2: { open: "08:30", close: "19:30" },
-  3: { open: "08:30", close: "19:30" },
-  4: { open: "08:30", close: "19:30" },
-  5: { open: "08:30", close: "19:30" },
-  6: { open: "14:00", close: "19:30" }
-};
-
-function checkOpenStatus() {
-  const now = new Date();
-  const day = now.getDay();
-  const currentTime = now.getHours().toString().padStart(2, '0') + ":" +
-                      now.getMinutes().toString().padStart(2, '0');
-  const todayHours = hours[day];
-
-  const statusBox = document.getElementById("open-status");
-  const listItems = document.querySelectorAll(".hours-list li");
-
-  listItems.forEach(li => {
-    li.classList.remove("today");
-    if (parseInt(li.dataset.day) === day) {
-      li.classList.add("today");
-    }
-  });
-
-  if (todayHours) {
-    const { open, close } = todayHours;
-    if (currentTime >= open && currentTime <= close) {
-      statusBox.textContent = "Open Now";
-      statusBox.className = "open-status open";
-    } else {
-      statusBox.textContent = "Closed Now";
-      statusBox.className = "open-status closed";
-    }
-  } else {
-    statusBox.textContent = "Closed";
-    statusBox.className = "open-status closed";
-  }
-}
-
-document.addEventListener("DOMContentLoaded", checkOpenStatus);
-
 document.addEventListener("DOMContentLoaded", () => {
   const dropdown = document.querySelector(".dropdown");
   let timeout;
@@ -71,38 +27,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector(".reviews-track");
-  const cards = document.querySelectorAll(".review-card");
+  const groups = document.querySelectorAll(".review-group");
   const prevBtn = document.querySelector(".carousel-btn.prev");
   const nextBtn = document.querySelector(".carousel-btn.next");
 
-  let currentIndex = 0;
-  const cardsPerView = window.innerWidth < 768 ? 1 : 3;
-  const totalPages = Math.ceil(cards.length / cardsPerView);
+  const visibleGroups = window.innerWidth < 768 ? 1 : 3;
+  const totalGroups = groups.length;
+  let currentIndex = visibleGroups; // Start after clones
 
-  const updateCarousel = () => {
-    const cardWidth = cards[0].offsetWidth;
-    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-  };
+  // Clone first and last groups for seamless looping
+  for (let i = 0; i < visibleGroups; i++) {
+    const firstClone = groups[i].cloneNode(true);
+    const lastClone = groups[totalGroups - 1 - i].cloneNode(true);
+    firstClone.classList.add("clone");
+    lastClone.classList.add("clone");
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, track.firstChild);
+  }
 
-  prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateCarousel();
+  const allGroups = document.querySelectorAll(".review-group");
+  const groupWidth = groups[0].offsetWidth + 16; // 16px = assumed gap/margin
+
+  // Set initial position
+  track.style.transform = `translateX(-${currentIndex * groupWidth}px)`;
+
+  function moveTo(index) {
+    track.style.transition = "transform 0.5s ease-in-out";
+    track.style.transform = `translateX(-${index * groupWidth}px)`;
+    currentIndex = index;
+  }
+
+  function handleTransitionEnd() {
+    if (currentIndex >= totalGroups + visibleGroups) {
+      // Jump to actual start
+      track.style.transition = "none";
+      currentIndex = visibleGroups;
+      track.style.transform = `translateX(-${currentIndex * groupWidth}px)`;
+    } else if (currentIndex < visibleGroups) {
+      // Jump to actual end
+      track.style.transition = "none";
+      currentIndex = totalGroups + visibleGroups - 1;
+      track.style.transform = `translateX(-${currentIndex * groupWidth}px)`;
     }
-  });
+  }
 
   nextBtn.addEventListener("click", () => {
-    if (currentIndex < cards.length - cardsPerView) {
-      currentIndex++;
-      updateCarousel();
-    }
+    moveTo(currentIndex + 1);
   });
 
+  prevBtn.addEventListener("click", () => {
+    moveTo(currentIndex - 1);
+  });
+
+  track.addEventListener("transitionend", handleTransitionEnd);
+
+  // Handle window resize
   window.addEventListener("resize", () => {
-    updateCarousel();
+    const newGroupWidth = groups[0].offsetWidth + 16;
+    track.style.transition = "none";
+    track.style.transform = `translateX(-${currentIndex * newGroupWidth}px)`;
   });
-
-  updateCarousel();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -140,89 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   processSections.forEach(section => observer.observe(section));
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".reviews-track");
-  const cards = document.querySelectorAll(".review-card");
-  const prevBtn = document.querySelector(".carousel-btn.prev");
-  const nextBtn = document.querySelector(".carousel-btn.next");
-
-  const visibleCards = 3;
-  const totalCards = cards.length;
-  let currentIndex = visibleCards; // Start after prepended clones
-
-  // Clone first and last N cards
-  for (let i = 0; i < visibleCards; i++) {
-    const firstClone = cards[i].cloneNode(true);
-    const lastClone = cards[totalCards - 1 - i].cloneNode(true);
-    firstClone.classList.add("clone");
-    lastClone.classList.add("clone");
-    track.appendChild(firstClone);
-    track.insertBefore(lastClone, track.firstChild);
-  }
-
-  const allCards = document.querySelectorAll(".review-card");
-  const cardWidth = cards[0].offsetWidth + 16; // Including margin
-
-  // Set initial position
-  track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-
-  function moveTo(index) {
-    track.style.transition = "transform 0.5s ease-in-out";
-    track.style.transform = `translateX(-${index * cardWidth}px)`;
-    currentIndex = index;
-  }
-
-  function handleTransitionEnd() {
-    // Jump to real start
-    if (currentIndex >= totalCards + visibleCards) {
-      track.style.transition = "none";
-      currentIndex = visibleCards;
-      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-    }
-
-    // Jump to real end
-    if (currentIndex < visibleCards) {
-      track.style.transition = "none";
-      currentIndex = totalCards + visibleCards - 1;
-      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-    }
-  }
-
-  nextBtn.addEventListener("click", () => {
-    moveTo(currentIndex + 1);
-  });
-
-  prevBtn.addEventListener("click", () => {
-    moveTo(currentIndex - 1);
-  });
-
-  track.addEventListener("transitionend", handleTransitionEnd);
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contact-form");
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const service = document.getElementById("service").value;
-    const message = document.getElementById("message").value.trim();
-
-    if (!name || !email || !service) {
-      alert("Please fill in all required fields.");
-      return;
-    }
-
-    const subject = `Service Request: ${service}`;
-    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AService: ${service}%0D%0A%0D%0AComments:%0D%0A${message}`;
-
-    const mailtoLink = `mailto:velo.guidrycsc@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-    window.open(mailtoLink, "_blank");
-  });
 });
 
 document.addEventListener("DOMContentLoaded", () => {

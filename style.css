@@ -959,7 +959,7 @@ body {
   position: relative;
   padding: 3rem 1rem;
   text-align: center;
-  background-image: url('images/reviews-bg.jpg'); /* replace with your actual image path */
+  background-image: url('images/reviews-bg.jpg');
   background-size: cover;
   background-position: center;
   color: #2e2e2e;
@@ -967,12 +967,11 @@ body {
   overflow: hidden;
 }
 
-/* Overlay to whiten the background */
 .reviews-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.85); /* white overlay at 75% opacity */
+  background-color: rgba(255, 255, 255, 0.85);
   z-index: -1;
 }
 
@@ -984,60 +983,69 @@ body {
 .reviews-carousel {
   max-width: 1000px;
   margin: 0 auto;
-  overflow: hidden;
   padding: 0 1rem;
 }
 
 .reviews-wrapper {
   overflow-x: auto;
-  overflow-y: visible;
-}
-
-.review-card {
-  flex: 0 0 300px;
-  max-width: 300px;
-  box-sizing: border-box;
-  margin: 0 8px;
-  padding: 1.5rem;
-  background-color: #f4f4f4;
-  border-radius: 10px;
-  border: 1px solid #222;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  overflow-y: hidden;
 }
 
 .reviews-track {
   display: flex;
-  align-items: stretch;
+  transition: transform 0.5s ease-in-out;
+  gap: 16px;
+  padding: 0 32px; /* ensures cards aren’t cut off at edges */
+  box-sizing: border-box;
 }
 
-.review-card:hover {
-  border-color: #a4bfad; /* highlight color on hover */
+.review-group {
+  flex: 0 0 calc(100% / 3 - 16px); /* Show 3 at a time (minus gap) */
+  max-width: calc(100% / 3 - 16px);
+  background: #fff;
+  border: 2px solid #444;
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 340px; /* adjust this to fit long reviews */
+  box-sizing: border-box;
+}
+
+.review-group:hover {
+  border-color: #a4bfad;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+.review-card {
+  flex: 1 1 auto;
+  overflow: hidden;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
 .review-card h3 {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
   color: #233582;
+  font-size: 1rem;
 }
 
 .review-card p {
-  flex-grow: 1;
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.review-divider {
+  height: 1px;
+  background-color: #ccc;
+  margin: 0.5rem 0;
+  flex-shrink: 0;
 }
 
 .stars {
   display: flex;
   justify-content: center;
-  gap: 4px;
-  font-size: 1.2rem;
-}
-
-.star.full {
+  gap: 2px;
+  font-size: 1rem;
   color: #f5c518;
 }
 
@@ -1054,13 +1062,8 @@ body {
   padding: 0 1rem;
 }
 
-.carousel-btn.prev {
-  left: -2rem; /* Pull slightly outside the carousel if needed */
-}
-
-.carousel-btn.next {
-  right: -2rem;
-}
+.carousel-btn.prev { left: -2rem; }
+.carousel-btn.next { right: -2rem; }
 
 .review-btn-container {
   margin-top: 2rem;
@@ -1098,10 +1101,11 @@ body {
   justify-content: center;
 }
 
-/* Responsive layout for smaller screens */
+/* Responsive */
 @media (max-width: 768px) {
-  .review-card {
-    min-width: calc(100% / 1 - 16px);
+  .review-group {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }
 
