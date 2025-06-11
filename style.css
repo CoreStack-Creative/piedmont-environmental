@@ -955,6 +955,14 @@ body {
   }
 }
 
+.heading-lightbox {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .reviews-section {
   position: relative;
   padding: 3rem 1rem;
@@ -967,11 +975,13 @@ body {
   overflow: hidden;
 }
 
-.reviews-section::before {
+ .reviews-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); /* for Safari support */
   z-index: -1;
 }
 
