@@ -1195,6 +1195,10 @@ body {
   height: auto;
   flex-shrink: 0;
   margin-right: 2rem;
+  background-color: rgba(0, 0, 0, 0.8); /* dark grey semi-transparent box */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 50px 30px rgba(0, 0, 0, 0.5); /* soft fading edges */
 }
 
 .design-hero-text {
