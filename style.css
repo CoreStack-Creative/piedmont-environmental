@@ -329,13 +329,6 @@ body {
   text-align: center;
 }
 
-.goals-list {
-  list-style: none;
-  padding: 0;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 .goals-list li {
   display: flex;
   align-items: flex-start;
@@ -345,6 +338,16 @@ body {
   animation: slideIn 1s forwards;
   animation-delay: var(--delay);
   margin: 1rem 0;
+}
+
+.goals-list li .bullet-icon {
+  background-image: url('check.png');
+  background-size: 20px 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
 }
 
 .goals-list li:nth-child(1) { --delay: 0.5s; }
