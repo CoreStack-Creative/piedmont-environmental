@@ -329,6 +329,13 @@ body {
   text-align: center;
 }
 
+.goals-list {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .goals-list li {
   display: flex;
   align-items: flex-start;
@@ -338,16 +345,6 @@ body {
   animation: slideIn 1s forwards;
   animation-delay: var(--delay);
   margin: 1rem 0;
-}
-
-.goals-list li .bullet-icon {
-  background-image: url('check.png');
-  background-size: 20px 12px;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 20px;
-  height: 20px;
-  margin-top: 4px;
 }
 
 .goals-list li:nth-child(1) { --delay: 0.5s; }
@@ -2494,82 +2491,3 @@ hr {
   transform: rotateY(180deg);
 }
 
-/* Two-column layout for sections */
-.side-by-side {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-.side-by-side .principle-text {
-  flex: 1;
-  min-width: 280px;
-}
-
-.image-placeholder {
-  flex: 1;
-  min-width: 280px;
-  padding: 2rem;
-  background-color: #ddd;
-  text-align: center;
-  font-style: italic;
-  color: #555;
-  border: 2px dashed #aaa;
-  height: 100%;
-}
-
-/* Horizontal image row */
-.image-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 2rem 0;
-}
-
-.half-img {
-  width: 48%;
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-/* Consultation Section (new parallax style) */
-
-.consultation-section {
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/backround.jpg');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  padding: 100px 20px;
-  color: white;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-}
-
-
-.consultation-content {
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.7); /* semi-transparent grey box */
-  padding: 40px;
-  border-radius: 10px;
-}
-
-.consultation-content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #ffffff;
-}
-
-.consultation-content ul {
-  padding-left: 1.2rem;
-  list-style-type: square;
-  color: #f0f0f0;
-  line-height: 1.7;
-}
-
-.consultation-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
