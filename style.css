@@ -1211,7 +1211,7 @@ body {
 
 /* Text content */
 .design-hero-content {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.75);
   padding: 2rem 3rem;
   border-radius: 12px;
   color: #fff;
@@ -1227,7 +1227,7 @@ body {
 .design-hero-content h2 {
   font-size: 2.5rem;
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 /* Animations */
