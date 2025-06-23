@@ -2472,11 +2472,13 @@ body {
 .flip-card {
   background-color: transparent;
   width: 100%;
+  max-width: 500px;
   aspect-ratio: 3 / 2;
   perspective: 1000px;
   cursor: pointer;
   border-radius: 16px;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .flip-card-inner {
@@ -2504,15 +2506,25 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 0; /* Remove inner rounding */
+  border-radius: 0;
+  font-size: 0.85rem; /* Ensures consistent sizing between sides */
+}
+
+/* Match font size for info rows */
+.card-info-column .card-name,
+.card-info-column .card-location,
+.card-info-column .card-email,
+.phone-line {
+  font-size: 0.85rem; /* Matches card-services p on back */
 }
 
 .flip-card-back {
   transform: rotateY(180deg);
 }
 
+/* Header & Subheader */
 .text-card h1.card-title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin: 0;
   text-align: left;
   font-family: 'Pacifico', cursive;
@@ -2520,114 +2532,105 @@ body {
 
 .text-card h2.card-subtitle {
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   text-align: right;
   margin: 0;
 }
 
 .card-separator {
   border: 2px solid #a80d0d;
-  margin: 0.5rem 0;
+  margin: 0.4rem 0;
 }
 
-.card-tagline {
+/* Tagline */
+.card-tagline,
+.small-tagline {
   text-align: center;
-  margin: 0.5rem 0;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
+  margin: 0.3rem 0;
 }
 
+/* Info Section */
 .card-info-column {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
   margin-top: 0.5rem;
   text-align: left;
+}
+
+.card-info-column .card-name {
+  font-weight: bold;
+}
+
+.card-info-column .card-email::before {
+  content: "Email: ";
+  font-weight: bold;
 }
 
 .phone-line {
-  font-size: 1rem;
   text-align: right;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
 }
 
-.card-email {
-  font-size: 1rem;
+/* Website */
+.card-website,
+.card-website.fancy-left {
+  font-family: 'Pacifico', cursive;
+  font-weight: bold;
   text-align: left;
-}
-
-.card-website {
-  font-size: 1rem;
   margin-top: auto;
 }
 
-.card-website.fancy-left {
-  text-align: left;
-  font-family: 'Pacifico', cursive;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
+/* Services on back */
 .card-services p {
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  font-size: 0.95rem;
-  margin: 0.3rem 0;
+  margin: 0.2rem 0;
   text-align: left;
 }
 
-.small-tagline {
-  font-size: 0.7rem;
-}
-
-/* Title and subtitle formatting */
-.title-main {
-  font-size: 1.1rem;
-  margin: 0;
-  white-space: nowrap;
-}
-
-.subtitle {
-  font-size: 1rem;
-  margin: 0.25rem 0 0.75rem;
-  display: inline-block;
-  text-indent: 2.4ch; /* Moves "LANDSCAPING AND DESIGN" so "L" aligns under "N" */
-  text-decoration: underline;
-  white-space: nowrap;
-}
-
-hr {
-  border: none;
-  border-top: 2px solid #a02e2e;
-  margin: 0.5rem 0 1rem;
-  width: 100%;
-}
-
-.tagline {
-  font-style: italic;
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-}
-
-.phone {
-  font-weight: bold;
-  margin-top: 0.75rem;
-}
-
+/* Back list (if used) */
 .flip-card-back ul {
   list-style: none;
   padding: 0;
   margin: 1rem 0;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   line-height: 1.4;
 }
 
-.website {
-  margin-top: auto;
-  font-weight: bold;
-  font-size: 0.9rem;
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.flip-card-back {
-  transform: rotateY(180deg);
+/* Responsive Scaling */
+@media (max-width: 600px) {
+  .text-card h1.card-title {
+    font-size: 1.4rem;
+  }
+
+  .text-card h2.card-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .card-info-column,
+  .phone-line {
+    font-size: 0.85rem;
+  }
+
+  .card-tagline,
+  .small-tagline {
+    font-size: 0.6rem;
+  }
+
+  .card-services p {
+    font-size: 0.75rem;
+  }
+
+  .card-website.fancy-left {
+    font-size: 0.9rem;
+  }
 }
 
