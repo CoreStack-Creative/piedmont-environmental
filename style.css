@@ -2470,13 +2470,13 @@ body {
 }
 
 .flip-card {
+  background-color: transparent;
+  width: 100%;
+  aspect-ratio: 3 / 2;
   perspective: 1000px;
   cursor: pointer;
-  padding: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
-  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .flip-card-inner {
@@ -2485,31 +2485,98 @@ body {
   height: 100%;
   transition: transform 0.8s ease-in-out;
   transform-style: preserve-3d;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #ffffff;
-  color: #a02e2e;
-  border-radius: 12px;
-  padding: 1.5rem;
+  background-color: white;
+  color: #a80d0d;
+  padding: 1rem;
   box-sizing: border-box;
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-between;
+  border-radius: 0; /* Remove inner rounding */
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.text-card h1.card-title {
+  font-size: 1.8rem;
+  margin: 0;
+  text-align: left;
+  font-family: 'Pacifico', cursive;
+}
+
+.text-card h2.card-subtitle {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 1.2rem;
+  text-align: right;
+  margin: 0;
+}
+
+.card-separator {
+  border: 2px solid #a80d0d;
+  margin: 0.5rem 0;
+}
+
+.card-tagline {
   text-align: center;
-  font-family: 'Didot', serif;
-  overflow: hidden;
+  margin: 0.5rem 0;
+  font-size: 0.75rem;
+}
+
+.card-info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  text-align: left;
+}
+
+.phone-line {
+  font-size: 1rem;
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+.card-email {
+  font-size: 1rem;
+  text-align: left;
+}
+
+.card-website {
+  font-size: 1rem;
+  margin-top: auto;
+}
+
+.card-website.fancy-left {
+  text-align: left;
+  font-family: 'Pacifico', cursive;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.card-services p {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 0.95rem;
+  margin: 0.3rem 0;
+  text-align: left;
+}
+
+.small-tagline {
+  font-size: 0.7rem;
 }
 
 /* Title and subtitle formatting */
