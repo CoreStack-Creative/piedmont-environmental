@@ -26,8 +26,42 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.header-hidden {
-  transform: translateY(-100%);
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Group hamburger and label together */
+.menu-toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+/* HAMBURGER MENU */
+.hamburger-menu {
+  display: none;
+  background: none;
+  font-size: 3.4rem; /* Slightly larger */
+  border: none;
+  cursor: pointer;
+  color: #233582;
+  padding: 0.5rem 0.2rem 0.5rem 0.5rem;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+@media (max-width: 1300px) {
+  .menu-toggle-group {
+    display: flex;
+  }
+  .hamburger-menu {
+    display: inline-block;
+  }
+  .menu-label {
+    display: inline-block;
+  }
 }
 
 /* LOGO & TITLE */
@@ -200,15 +234,39 @@ body {
 .hamburger-menu {
   display: none;
   background: none;
-  font-size: 2.2rem;
+  font-size: 3rem;
   border: none;
   cursor: pointer;
   color: #233582;
   padding: 0.5rem;
+  vertical-align: middle;
+}
+
+/* MENU label next to hamburger */
+.menu-label {
+  display: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #233582;
+  margin-left: 0.3rem;
+  letter-spacing: 0.08em;
+  vertical-align: middle;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1300px) {
+  .hamburger-menu {
+    display: inline-block;
+  }
+  .menu-label {
+    display: inline-block;
+  }
 }
 
 /* RESPONSIVE */
-@media (max-width: 1000px) {
+@media (max-width: 1300px) {
   .hamburger-menu {
     display: block;
   }
@@ -283,6 +341,38 @@ body {
 
   .site-subtitle {
     font-size: 1rem;
+  }
+}
+
+/* HEADER STYLING: Responsive stacking and logo sizing */
+@media (max-width: 700px) {
+  .main-header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem 0.5rem;
+  }
+  .logo-title {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .logo {
+    height: 6.5rem; /* slightly larger for mobile */
+    margin-bottom: 0.5rem;
+  }
+  .site-title-wrapper {
+    text-align: center;
+    margin-right: 0;
+  }
+  .site-title {
+    margin-right: 0;
+  }
+}
+
+/* Make logo larger on wide screens */
+@media (min-width: 1500px) {
+  .logo {
+    height: 9rem;
   }
 }
 
