@@ -373,3 +373,76 @@ window.addEventListener('scroll', () => {
   lastScrollY = window.scrollY;
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  // SERVICES CAROUSEL LOGIC
+  const track = document.querySelector('.services-track');
+  const cards = Array.from(track.children);
+  const prevBtn = document.querySelector('.services-carousel-btn.prev');
+  const nextBtn = document.querySelector('.services-carousel-btn.next');
+
+  let cardsPerView = window.innerWidth < 700 ? 1 : 2;
+  let cardWidth = cards[0].offsetWidth + 40; // 40px = margin
+  let currentIndex = cardsPerView; // Start after clones
+
+  // Clone first and last N cards for seamless looping
+  function setupClones() {
+    // Remove old clones if any
+    Array.from(track.querySelectorAll('.clone')).forEach(clone => clone.remove());
+    cardsPerView = window.innerWidth < 700 ? 1 : 2;
+    cardWidth = cards[0].offsetWidth + 40;
+    // Clone first and last N
+    for (let i = 0; i < cardsPerView; i++) {
+      const firstClone = cards[i].cloneNode(true);
+      const lastClone = cards[cards.length - 1 - i].cloneNode(true);
+      firstClone.classList.add('clone');
+      lastClone.classList.add('clone');
+      track.appendChild(firstClone);
+      track.insertBefore(lastClone, track.firstChild);
+    }
+  }
+
+  setupClones();
+
+  function getAllCards() {
+    return Array.from(track.children);
+  }
+
+  function updateCardWidth() {
+    cardWidth = cards[0].offsetWidth + 40;
+  }
+
+  function moveTo(index, animate = true) {
+    updateCardWidth();
+    if (!animate) track.style.transition = 'none';
+    else track.style.transition = 'transform 0.6s cubic-bezier(.77,0,.18,1)';
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
+    currentIndex = index;
+  }
+
+  function handleTransitionEnd() {
+    const totalCards = cards.length;
+    if (currentIndex >= totalCards + cardsPerView) {
+      moveTo(cardsPerView, false);
+    } else if (currentIndex < cardsPerView) {
+      moveTo(totalCards + cardsPerView - 1, false);
+    }
+  }
+
+  nextBtn.addEventListener('click', () => {
+    moveTo(currentIndex + 1);
+  });
+  prevBtn.addEventListener('click', () => {
+    moveTo(currentIndex - 1);
+  });
+  track.addEventListener('transitionend', handleTransitionEnd);
+
+  // Responsive: re-setup on resize
+  window.addEventListener('resize', () => {
+    setupClones();
+    moveTo(cardsPerView, false);
+  });
+
+  // Initial position
+  setTimeout(() => moveTo(cardsPerView, false), 100);
+});
+
