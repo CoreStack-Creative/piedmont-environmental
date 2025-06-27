@@ -511,7 +511,7 @@ body {
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 75rem;
   margin: 0 auto;
   gap: 2rem;
 }
