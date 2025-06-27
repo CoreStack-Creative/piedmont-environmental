@@ -414,7 +414,7 @@ body {
 }
 
 .our-goals h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -434,7 +434,8 @@ body {
   transform: translateX(-100%);
   animation: slideIn 1s forwards;
   animation-delay: var(--delay);
-  margin: 1rem 0;
+  margin: 1rem 0; 
+  font-size: 1.35rem;
 }
 
 .goals-list li:nth-child(1) { --delay: 0.5s; }
