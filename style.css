@@ -383,31 +383,73 @@ body {
   background-attachment: fixed;
   height: 600px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
-  color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  color: #f7f7f7;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-text {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 90%;
+.hero-catchphrase {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f7f7f7;
+  color: #333;
+  padding: 1rem 2rem;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
-.hero-text h2,
-.hero-text h3 {
-  margin: 0.5rem 0;
-}
-
-.brief-description {
-  text-align: center;
-  margin: 2rem auto;
-  max-width: 700px;
+.hero-catchphrase h3 {
+  margin: 0;
   font-size: 1.2rem;
-  padding: 0 1rem;
+  font-weight: 600;
+}
+
+.hero-description {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+  backdrop-filter: blur(15px);
+  padding: 1.5rem;
+  border-radius: 15px 15px 0 0;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+.hero-description p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* JavaScript-based parallax scrolling */
+.hero.parallax-scroll {
+  background-attachment: fixed;
+}
+
+/* For browsers that support CSS scroll effects */
+@supports (background-attachment: fixed) {
+  .hero {
+    background-attachment: fixed;
+  }
+}
+
+/* Mobile optimization - disable parallax on mobile for performance */
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll !important;
+  }
 }
 
 .our-goals {
