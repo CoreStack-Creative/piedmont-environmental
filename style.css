@@ -381,15 +381,28 @@ body {
 .hero {
   background: url('images/headerimg.jpg') center/cover no-repeat;
   background-attachment: fixed;
-  height: 600px;
+  height: 41rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  color: #f7f7f7;
+  color: white;
   position: relative;
   overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(164, 191, 173, 0.7) 60%, #a4bfad 100%);
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
 }
 
 .hero-catchphrase {
@@ -397,7 +410,7 @@ body {
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  background: #f7f7f7;
+  background: white;
   color: #333;
   padding: 1rem 2rem;
   border-radius: 0 0 15px 15px;
@@ -413,17 +426,13 @@ body {
 
 .hero-description {
   position: absolute;
-  bottom: -20px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
-  backdrop-filter: blur(15px);
+  color: white;
   padding: 1.5rem;
-  border-radius: 15px 15px 0 0;
   max-width: 600px;
   width: 90%;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 10;
 }
 

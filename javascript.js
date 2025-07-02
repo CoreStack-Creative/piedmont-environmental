@@ -446,3 +446,69 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => moveTo(cardsPerView, false), 100);
 });
 
+// Hero section scroll fade effect
+document.addEventListener('DOMContentLoaded', function() {
+    const heroSection = document.querySelector('.hero');
+    const heroOverlay = heroSection.querySelector('::after') || heroSection;
+    
+    // Create a custom overlay element if ::after pseudo-element manipulation is needed
+    const customOverlay = document.createElement('div');
+    customOverlay.className = 'hero-scroll-overlay';
+    customOverlay.style.cssText = `
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60%;
+        background: linear-gradient(to bottom, transparent 0%, rgba(44, 62, 80, 0.7) 60%, #2c3e50 100%);
+        pointer-events: none;
+        z-index: 1;
+        transition: opacity 0.3s ease;
+    `;
+    heroSection.appendChild(customOverlay);
+    
+    function updateHeroOverlay() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const heroHeight = heroSection.offsetHeight;
+        const heroTop = heroSection.offsetTop;
+        const heroBottom = heroTop + heroHeight;
+        
+        // Calculate fade based on scroll position
+        let fadeProgress = 0;
+        
+        if (scrollTop > heroTop && scrollTop < heroBottom) {
+            // User is scrolling through the hero section
+            fadeProgress = (scrollTop - heroTop) / heroHeight;
+        } else if (scrollTop >= heroBottom) {
+            // User has scrolled past the hero section
+            fadeProgress = 1;
+        }
+        
+        // Apply fade effect (fade out the overlay as user scrolls)
+        const opacity = Math.max(0, 1 - fadeProgress * 1.5);
+        customOverlay.style.opacity = opacity;
+        
+        // Optional: Also fade the color intensity
+        const colorIntensity = Math.max(0.3, opacity);
+        customOverlay.style.background = `linear-gradient(to bottom, transparent 0%, rgba(44, 62, 80, ${0.7 * colorIntensity}) 60%, rgba(44, 62, 80, ${colorIntensity}) 100%)`;
+    }
+    
+    // Throttled scroll handler for better performance
+    let ticking = false;
+    function handleScroll() {
+        if (!ticking) {
+            requestAnimationFrame(function() {
+                updateHeroOverlay();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    // Initialize and attach scroll listener
+    updateHeroOverlay();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Handle resize events
+    window.addEventListener('resize', updateHeroOverlay, { passive: true });
+});
