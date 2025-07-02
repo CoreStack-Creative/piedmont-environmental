@@ -512,3 +512,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle resize events
     window.addEventListener('resize', updateHeroOverlay, { passive: true });
 });
+
+// Animated blue line scroll effect
+window.addEventListener('scroll', function() {
+  const heroLine = document.querySelector('.hero-line');
+  const scrollPosition = window.scrollY;
+  const triggerPoint = 100; // Adjust this value to control when animation starts
+  
+  if (scrollPosition > triggerPoint) {
+    heroLine.classList.add('scroll-active');
+  } else {
+    heroLine.classList.remove('scroll-active');
+  }
+});
