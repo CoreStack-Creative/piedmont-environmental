@@ -2868,61 +2868,12 @@ body {
   }
 }
 
-.flip-card {
-  background-color: transparent;
-  width: 100%; /* Full width of .about-box */
-  aspect-ratio: 3 / 2;
-  perspective: 1000px;
-  cursor: pointer;
-  border-radius: 16px;
-  overflow: hidden;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flip-card-inner {
-  width: 85%; /* Shrinks the card itself */
-  height: 85%;
-  max-width: 420px;
-  max-height: 280px;
-  position: relative;
-  transition: transform 0.8s ease-in-out;
-  transform-style: preserve-3d;
-}
-
-.flip-card.flipped .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  color: #a80d0d;
-  padding: 1rem;
-  box-sizing: border-box;
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 0;
-  font-size: 0.85rem; /* Ensures consistent sizing between sides */
-}
-
 /* Match font size for info rows */
 .card-info-column .card-name,
 .card-info-column .card-location,
 .card-info-column .card-email,
 .phone-line {
   font-size: 0.85rem; /* Matches card-services p on back */
-}
-
-.flip-card-back {
-  transform: rotateY(180deg);
 }
 
 /* Header & Subheader */
@@ -3037,3 +2988,34 @@ body {
   }
 }
 
+/* Business card styling */
+.text-card {
+  background-color: white;
+  color: #a80d0d;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+/* Text boxes */
+.text-box h2 {
+  color: #a80d0d;
+  margin-bottom: 1rem;
+}
+
+.text-box p {
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Responsive update */
+@media (max-width: 600px) {
+  .about-box-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
