@@ -1908,9 +1908,25 @@ body {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Three columns by default */
   gap: 30px;
   margin-bottom: 60px;
+}
+
+/* Responsive: two columns on medium screens */
+@media (max-width: 1050px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Responsive: one column on small screens */
+@media (max-width: 700px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
 }
 
 .service-card {
@@ -2103,7 +2119,7 @@ body {
 }
 
 /* Animations */
-@keyframes fadeInUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -2769,7 +2785,7 @@ body {
 
 @media (max-width: 600px) {
   .direct-contact-detail {
-    justify-content: center;
+       justify-content: center;
     text-align: center;
   }
 }
