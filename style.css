@@ -855,6 +855,7 @@ body {
   justify-content: flex-end;
   padding: 0;
   transition: box-shadow 0.3s, transform 0.3s;
+  height: 430px; /* Ensure all service cards have the same height */
 }
 
 .service-card:hover {
@@ -1908,24 +1909,34 @@ body {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Three columns by default */
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   margin-bottom: 60px;
 }
 
-/* Responsive: two columns on medium screens */
+.service-card {
+  /* Ensure all service cards have the same height */
+  height: 430px;
+  /* ...existing code... */
+}
+
 @media (max-width: 1050px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
+  .service-card {
+    height: 400px;
+  }
 }
 
-/* Responsive: one column on small screens */
 @media (max-width: 700px) {
   .services-grid {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+  .service-card {
+    height: 370px;
   }
 }
 
