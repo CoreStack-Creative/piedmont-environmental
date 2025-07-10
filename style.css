@@ -1852,7 +1852,7 @@ body {
 
 /* Services Section */
 .services-section {
-  padding: 5rem 0;
+  padding: 80px 0;
   background: linear-gradient(135deg, #f8fdf8 0%, #e8f5e8 100%);
   position: relative;
   overflow: hidden;
@@ -1870,22 +1870,22 @@ body {
 }
 
 .container {
-  max-width: 75rem;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 20px;
   position: relative;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 3.75rem;
+  margin-bottom: 60px;
   animation: fadeInUp 0.8s ease-out;
 }
 
 .section-header h2 {
   font-size: 2.5rem;
   color: #2a4829;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   font-weight: 700;
   position: relative;
 }
@@ -1893,11 +1893,11 @@ body {
 .section-header h2::after {
   content: '';
   display: block;
-  width: 3.75rem;
-  height: 0.1875rem;
+  width: 60px;
+  height: 3px;
   background: linear-gradient(90deg, #4a7c59, #6b8e5a);
-  margin: 1.25rem auto;
-  border-radius: 0.125rem;
+  margin: 20px auto;
+  border-radius: 2px;
 }
 
 .section-header p {
@@ -1908,41 +1908,37 @@ body {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.875rem;
-  margin-bottom: 3.75rem;
-  align-items: stretch; /* Ensures all cards stretch to same height */
+  grid-template-columns: repeat(3, 1fr); /* Three columns by default */
+  gap: 30px;
+  margin-bottom: 60px;
 }
 
 /* Responsive: two columns on medium screens */
-@media (max-width: 65.625rem) {
+@media (max-width: 1050px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 24px;
   }
 }
 
 /* Responsive: one column on small screens */
-@media (max-width: 43.75rem) {
+@media (max-width: 700px) {
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 1.125rem;
+    gap: 18px;
   }
 }
 
 .service-card {
   background: #ffffff;
-  border-radius: 1.25rem;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 0.625rem 1.875rem rgba(42, 72, 41, 0.1);
+  box-shadow: 0 10px 30px rgba(42, 72, 41, 0.1);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   cursor: pointer;
   animation: fadeInUp 0.6s ease-out;
   animation-fill-mode: both;
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Forces all cards to be same height */
 }
 
 .service-card:nth-child(1) { animation-delay: 0.1s; }
@@ -1953,15 +1949,14 @@ body {
 .service-card:nth-child(6) { animation-delay: 0.6s; }
 
 .service-card:hover {
-  transform: translateY(-0.625rem) scale(1.02);
-  box-shadow: 0 1.25rem 2.5rem rgba(42, 72, 41, 0.15);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(42, 72, 41, 0.15);
 }
 
 .service-image {
   position: relative;
-  height: 12.5rem; /* Fixed height for consistent image area */
+  height: 200px;
   overflow: hidden;
-  flex-shrink: 0; /* Prevents image from shrinking */
 }
 
 .image-placeholder {
@@ -1975,7 +1970,7 @@ body {
 }
 
 .image-placeholder.large {
-  height: 15.625rem;
+  height: 250px;
 }
 
 .service-icon {
@@ -2010,9 +2005,9 @@ body {
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border: 0.125rem solid white;
-  border-radius: 1.5625rem;
+  padding: 12px 24px;
+  border: 2px solid white;
+  border-radius: 25px;
   transition: all 0.3s ease;
 }
 
@@ -2022,17 +2017,13 @@ body {
 }
 
 .service-content {
-  padding: 1.875rem;
-  flex-grow: 1; /* Allows content to fill remaining space */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Distributes content evenly */
+  padding: 30px;
 }
 
 .service-content h3 {
   font-size: 1.4rem;
   color: #2a4829;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   font-weight: 600;
 }
 
@@ -2040,41 +2031,39 @@ body {
   color: #5a6c5a;
   font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 1.25rem;
-  flex-grow: 1; /* Allows description to expand */
+  margin-bottom: 20px;
 }
 
 .service-features {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: auto; /* Pushes badges to bottom */
+  gap: 8px;
 }
 
 .feature-badge {
   background: linear-gradient(135deg, #e8f5e8, #d4edda);
   color: #2a4829;
-  padding: 0.375rem 0.875rem;
-  border-radius: 1.25rem;
+  padding: 6px 14px;
+  border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  border: 0.0625rem solid rgba(42, 72, 41, 0.1);
+  border: 1px solid rgba(42, 72, 41, 0.1);
   transition: all 0.3s ease;
 }
 
 .service-card:hover .feature-badge {
   background: linear-gradient(135deg, #4a7c59, #6b8e5a);
   color: white;
-  transform: translateY(-0.125rem);
+  transform: translateY(-2px);
 }
 
 .services-cta {
   background: linear-gradient(135deg, #2a4829, #4a7c59);
-  border-radius: 1.5625rem;
-  padding: 3.125rem;
+  border-radius: 25px;
+  padding: 50px;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 2.5rem;
+  gap: 40px;
   align-items: center;
   color: white;
   position: relative;
@@ -2094,33 +2083,33 @@ body {
 
 .cta-content h3 {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   font-weight: 700;
 }
 
 .cta-content p {
   font-size: 1.1rem;
-  margin-bottom: 1.875rem;
+  margin-bottom: 30px;
   opacity: 0.9;
 }
 
 .cta-button {
   background: white;
   color: #2a4829;
-  padding: 0.9375rem 1.875rem;
+  padding: 15px 30px;
   border: none;
-  border-radius: 3.125rem;
+  border-radius: 50px;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 0.3125rem 0.9375rem rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .cta-button:hover {
   background: #f8fdf8;
-  transform: translateY(-0.125rem);
-  box-shadow: 0 0.5rem 1.5625rem rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .cta-image {
@@ -2130,10 +2119,10 @@ body {
 }
 
 /* Animations */
-@keyframes fadeInUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(1.875rem);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -2151,9 +2140,9 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 48rem) {
+@media (max-width: 768px) {
   .services-section {
-    padding: 3.75rem 0;
+    padding: 60px 0;
   }
   
   .section-header h2 {
@@ -2162,16 +2151,16 @@ body {
   
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 20px;
   }
   
   .service-card {
-    margin: 0 0.625rem;
+    margin: 0 10px;
   }
   
   .services-cta {
     grid-template-columns: 1fr;
-    padding: 1.875rem;
+    padding: 30px;
     text-align: center;
   }
   
@@ -2180,21 +2169,17 @@ body {
   }
 }
 
-@media (max-width: 30rem) {
+@media (max-width: 480px) {
   .container {
-    padding: 0 0.9375rem;
+    padding: 0 15px;
   }
   
   .service-content {
-    padding: 1.25rem;
+    padding: 20px;
   }
   
   .services-cta {
-    padding: 1.25rem;
-  }
-  
-  .service-image {
-    height: 10rem; /* Smaller image height on mobile */
+    padding: 20px;
   }
 }
 
