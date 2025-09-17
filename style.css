@@ -1922,7 +1922,6 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="leaf" patternUnits="userSpaceOnUse" width="20" height="20"><path d="M10 2C14 6 18 10 10 18C2 10 6 6 10 2Z" fill="%23e8f5e8" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23leaf)"/></svg>') repeat;
   opacity: 0.1;
 }
 
@@ -1965,163 +1964,263 @@ body {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-bottom: 60px;
+  padding: 0 20px;
+  align-items: start;
+  justify-content: center;
+  justify-items: center;
 }
 
 .service-card {
-  /* Ensure all service cards have the same height */
-  height: 430px;
-  /* ...existing code... */
-}
-
-@media (max-width: 1050px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-  .service-card {
-    height: 400px;
-  }
-}
-
-@media (max-width: 700px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-  .service-card {
-    height: 370px;
-  }
-}
-
-.service-card {
-  background: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(42, 72, 41, 0.1);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
+  min-height: 450px;
+  height: auto;
+  width: 100%;
+  max-width: 280px;
+  border-radius: 24px;
+  overflow: visible;
   cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation: fadeInUp 0.6s ease-out;
   animation-fill-mode: both;
+  box-shadow: 0 15px 35px rgba(42, 72, 41, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .service-card:nth-child(1) { animation-delay: 0.1s; }
 .service-card:nth-child(2) { animation-delay: 0.2s; }
 .service-card:nth-child(3) { animation-delay: 0.3s; }
 .service-card:nth-child(4) { animation-delay: 0.4s; }
-.service-card:nth-child(5) { animation-delay: 0.5s; }
-.service-card:nth-child(6) { animation-delay: 0.6s; }
 
 .service-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(42, 72, 41, 0.15);
+  transform: translateY(-5px) scale(1.01) rotate(0deg);
+  box-shadow: 0 15px 30px rgba(42, 72, 41, 0.2);
+  z-index: 10;
 }
 
-.service-image {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
+/* Unique card backgrounds with more distinct styles */
+.hardscaping-card {
+  transform: rotate(-0.5deg);
+  align-self: start;
 }
 
-.image-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #4a7c59, #6b8e5a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.image-placeholder.large {
-  height: 250px;
-}
-
-.service-icon {
-  font-size: 4rem;
-  filter: brightness(0) invert(1);
-  transition: transform 0.3s ease;
-}
-
-.service-card:hover .service-icon {
-  transform: scale(1.1) rotate(5deg);
-}
-
-.service-overlay {
+.hardscaping-card .card-background {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: rgba(42, 72, 41, 0.9);
+  height: 180px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 30%, #34495e 70%, #2a4829 100%);
+  z-index: 1;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+}
+
+.bed-prep-card {
+  transform: rotate(0.5deg);
+  align-self: start;
+}
+
+.bed-prep-card .card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(135deg, #2d5016 0%, #27ae60 30%, #4a7c59 70%, #2a4829 100%);
+  z-index: 1;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+}
+
+.deer-fence-card {
+  transform: rotate(-0.5deg);
+  align-self: start;
+}
+
+.deer-fence-card .card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(135deg, #654321 0%, #8b4513 30%, #a0522d 70%, #2a4829 100%);
+  z-index: 1;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+}
+
+.invasive-removal-card {
+  transform: rotate(0.5deg);
+  align-self: start;
+}
+
+.invasive-removal-card .card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(135deg, #8b6914 0%, #b8860b 30%, #daa520 70%, #2a4829 100%);
+  z-index: 1;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+}
+
+/* Add unique decorative elements to each card */
+.hardscaping-card .card-background::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  z-index: 2;
+}
+
+.bed-prep-card .card-background::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 80px;
+  height: 80px;
+  background-size: 20px 20px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.deer-fence-card .card-background::before {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 3px;
+  z-index: 2;
+}
+
+.invasive-removal-card .card-background::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.service-icon-container {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  height: 180px;
+  flex-shrink: 0;
+  z-index: 3;
 }
 
-.service-card:hover .service-overlay {
+.service-icon {
+  font-size: 4.5rem;
+  filter: brightness(0) invert(1);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 4;
+}
+
+.icon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 3;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.2) rotate(10deg);
+  filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(255,255,255,0.5));
+}
+
+.service-card:hover .icon-glow {
   opacity: 1;
 }
 
-.learn-more {
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 12px 24px;
-  border: 2px solid white;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
-
-.learn-more:hover {
-  background: white;
-  color: #2a4829;
-}
-
 .service-content {
+  position: relative;
   padding: 30px;
+  min-height: auto;
+  height: auto;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0 0 24px 24px;
+  flex-grow: 1;
 }
 
 .service-content h3 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #2a4829;
   margin-bottom: 16px;
-  font-weight: 600;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .service-description {
-  color: #5a6c5a;
+  color: #4a4a4a;
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 20px;
+  flex: 1;
 }
 
-.service-features {
+.service-highlights {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 8px;
 }
 
-.feature-badge {
-  background: linear-gradient(135deg, #e8f5e8, #d4edda);
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
   color: #2a4829;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.85rem;
   font-weight: 500;
-  border: 1px solid rgba(42, 72, 41, 0.1);
-  transition: all 0.3s ease;
 }
 
-.service-card:hover .feature-badge {
+.highlight-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
   background: linear-gradient(135deg, #4a7c59, #6b8e5a);
   color: white;
-  transform: translateY(-2px);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.service-overlay {
+  display: none;
+}
+
+.learn-more {
+  display: none;
 }
 
 .services-cta {
@@ -2171,6 +2270,8 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-decoration: none;
+  display: inline-block;
 }
 
 .cta-button:hover {
@@ -2186,7 +2287,7 @@ body {
 }
 
 /* Animations */
-@keyframes fadeIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -2207,6 +2308,62 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    align-items: start;
+    justify-content: center;
+    justify-items: center;
+  }
+  
+  .service-card {
+    min-height: 400px;
+    align-self: start;
+    max-width: 350px;
+  }
+  
+  .service-icon-container {
+    height: 160px;
+  }
+  
+  .hardscaping-card .card-background,
+  .bed-prep-card .card-background,
+  .deer-fence-card .card-background,
+  .invasive-removal-card .card-background {
+    height: 160px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0 10px;
+    align-items: start;
+    justify-content: center;
+    justify-items: center;
+  }
+  
+  .service-card {
+    min-height: 380px;
+    transform: rotate(0deg) !important;
+    align-self: start;
+    max-width: 400px;
+  }
+  
+  .service-icon-container {
+    height: 150px;
+  }
+  
+  .hardscaping-card .card-background,
+  .bed-prep-card .card-background,
+  .deer-fence-card .card-background,
+  .invasive-removal-card .card-background {
+    height: 150px;
+  }
+}
+
 @media (max-width: 768px) {
   .services-section {
     padding: 60px 0;
@@ -2218,11 +2375,38 @@ body {
   
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 25px;
+    padding: 0;
+    align-items: start;
+    justify-content: center;
+    justify-items: center;
   }
   
   .service-card {
-    margin: 0 10px;
+    min-height: 370px;
+    margin: 0;
+    transform: rotate(0deg) !important;
+    align-self: start;
+    max-width: 450px;
+  }
+  
+  .service-icon-container {
+    height: 140px;
+  }
+  
+  .hardscaping-card .card-background,
+  .bed-prep-card .card-background,
+  .deer-fence-card .card-background,
+  .invasive-removal-card .card-background {
+    height: 140px;
+  }
+  
+  .service-content {
+    padding: 25px;
+  }
+  
+  .service-content h3 {
+    font-size: 1.4rem;
   }
   
   .services-cta {
@@ -2243,6 +2427,27 @@ body {
   
   .service-content {
     padding: 20px;
+  }
+  
+  .service-card {
+    min-height: 340px;
+    align-self: start;
+    max-width: 100%;
+  }
+  
+  .service-icon-container {
+    height: 120px;
+  }
+  
+  .hardscaping-card .card-background,
+  .bed-prep-card .card-background,
+  .deer-fence-card .card-background,
+  .invasive-removal-card .card-background {
+    height: 120px;
+  }
+  
+  .service-icon {
+    font-size: 3rem;
   }
   
   .services-cta {
