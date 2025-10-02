@@ -1915,7 +1915,7 @@ body {
 
 .pricing-section .pricing-line {
   font-size: 1rem;
-  color: #233582;
+  color: #b03e3e;;
   margin-bottom: 0.5rem;
   display: flex;
   justify-content: center;
@@ -1926,7 +1926,7 @@ body {
 .contact-cta-button {
   display: inline-block;
   padding: 0.5rem 1.2rem;
-  background-color: #233582;
+  background-color: #b03e3e;;
   color: white;
   font-weight: bold;
   border-radius: 6px;
