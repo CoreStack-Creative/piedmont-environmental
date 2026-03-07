@@ -527,3 +527,167 @@ window.addEventListener('scroll', function() {
     heroLine.classList.remove('scroll-active');
   }
 });
+
+/* ============================================
+   PEC SERVICES SECTION — pec-services.js
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  const SERVICES = [
+    {
+      name: 'Deer Fences',
+      href: 'deerfences.html',
+      img: 'images/fence4.jpg',
+      alt: 'Deer Fencing',
+      desc: 'Install a fence around your property to protect yourself against deer.'
+    },
+    {
+      name: 'Consultation & Design',
+      href: 'consultationanddesign.html',
+      img: 'images/consultation.JPG',
+      alt: 'Consultation & Design',
+      desc: 'Piedmont Environmental designs residential landscapes using ecological principles.'
+    },
+    {
+      name: 'Landscape Design',
+      href: 'installations.html',
+      img: 'images/consult.png',
+      alt: 'Landscape Design',
+      desc: 'Professional designs to enhance your outdoor space while keeping it ecological.'
+    },
+    {
+      name: 'Invasive Plant Control',
+      href: 'invasiveplantcontrol.html',
+      img: 'images/consultation.JPG',
+      alt: 'Invasive Plant Control',
+      desc: 'Helping to control invasive or exotic plants using many different strategies depending on the time of year.'
+    }
+  ];
+
+  // SVG helpers
+  const arrowIcon = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`;
+
+  const gridIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="6" height="6" rx="1.5" fill="currentColor" opacity="0.7"/>
+    <rect x="12" y="2" width="6" height="6" rx="1.5" fill="currentColor" opacity="0.7"/>
+    <rect x="2" y="12" width="6" height="6" rx="1.5" fill="currentColor" opacity="0.7"/>
+    <rect x="12" y="12" width="6" height="6" rx="1.5" fill="currentColor" opacity="0.7"/>
+  </svg>`;
+
+  const closeIcon = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </svg>`;
+
+  // Build modal HTML
+  function buildModal() {
+    const items = SERVICES.map(s => `
+      <a href="${s.href}" class="pec-srv-modal-item">
+        <img src="${s.img}" alt="${s.alt}" class="pec-srv-modal-item-img">
+        <div class="pec-srv-modal-item-content">
+          <div class="pec-srv-modal-item-name">${s.name}</div>
+          <p class="pec-srv-modal-item-desc">${s.desc}</p>
+          <span class="pec-srv-modal-item-link">View service ${arrowIcon}</span>
+        </div>
+      </a>
+    `).join('');
+
+    return `
+      <div class="pec-srv-modal-backdrop" id="pecSrvModal" role="dialog" aria-modal="true" aria-label="All Services">
+        <div class="pec-srv-modal">
+          <div class="pec-srv-modal-header">
+            <div>
+              <h2 class="pec-srv-modal-title">All Services</h2>
+              <p class="pec-srv-modal-subtitle">Everything we offer at Piedmont Environmental</p>
+            </div>
+            <button class="pec-srv-modal-close" id="pecSrvModalClose" aria-label="Close">${closeIcon}</button>
+          </div>
+          <div class="pec-srv-modal-body">
+            ${items}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Open / close helpers
+  function openModal() {
+    const backdrop = document.getElementById('pecSrvModal');
+    if (!backdrop) return;
+    backdrop.classList.add('pec-srv-modal-open');
+    document.body.style.overflow = 'hidden';
+    // Focus close button for accessibility
+    setTimeout(() => {
+      const closeBtn = document.getElementById('pecSrvModalClose');
+      if (closeBtn) closeBtn.focus();
+    }, 50);
+  }
+
+  function closeModal() {
+    const backdrop = document.getElementById('pecSrvModal');
+    if (!backdrop) return;
+    backdrop.classList.remove('pec-srv-modal-open');
+    document.body.style.overflow = '';
+  }
+
+  // Inject modal and wire up events
+  function init() {
+    // Inject modal into body
+    document.body.insertAdjacentHTML('beforeend', buildModal());
+
+    const backdrop = document.getElementById('pecSrvModal');
+    const closeBtn = document.getElementById('pecSrvModalClose');
+    const triggers = document.querySelectorAll('.pec-srv-viewall-panel');
+
+    // Open on View All click
+    triggers.forEach(btn => btn.addEventListener('click', openModal));
+
+    // Close on X
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    // Close on backdrop click
+    backdrop.addEventListener('click', function (e) {
+      if (e.target === backdrop) closeModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Staggered fade-in for service cards
+    const cards = document.querySelectorAll('.pec-srv-card, .pec-srv-viewall-panel');
+    cards.forEach((card, i) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(22px)';
+      card.style.transition = `opacity 0.5s ease ${i * 0.10}s, transform 0.5s ease ${i * 0.10}s, box-shadow 0.32s cubic-bezier(0.4,0,0.2,1), border-color 0.32s cubic-bezier(0.4,0,0.2,1)`;
+    });
+
+    // Intersection observer for entrance animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    cards.forEach(card => observer.observe(card));
+  }
+
+  // Run after DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
