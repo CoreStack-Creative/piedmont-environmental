@@ -691,3 +691,32 @@ window.addEventListener('scroll', function() {
     init();
   }
 })();
+
+(function () {
+  'use strict';
+
+  function initInstlAnimations() {
+    var targets = document.querySelectorAll('.instl-service-strip, .instl-cta');
+    if (!targets.length) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('instl-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    targets.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initInstlAnimations);
+  } else {
+    initInstlAnimations();
+  }
+
+})();
