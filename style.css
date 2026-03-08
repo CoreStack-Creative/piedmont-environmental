@@ -4015,4 +4015,22 @@ body {
   .instl-cta { padding: 24px 16px; }
 
   .instl-cta-img { display: none; }
+} 
+/* === Goals: image beside list === */
+.goals-content {
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.goals-list {
+  flex: 1;
+  min-width: 0;
+  max-width: unset;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .goals-content {
+    flex-wrap: wrap;
+  }
 }
